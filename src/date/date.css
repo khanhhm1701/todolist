@@ -1,0 +1,9 @@
+.today {
+    color: #06b6d4;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 32px;
+    box-sizing: border-box;
+}   

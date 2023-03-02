@@ -1,0 +1,226 @@
+.todo-page {
+    display: flex;
+}
+
+.side-bar {
+    width: 20%;
+    height: 100vh;
+    background-color: #06b6d4;
+    box-sizing: border-box;
+}
+
+.todo-logo {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 16px 0;
+}
+
+.content-and-nav {
+    display: block;
+    width: 80%;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: #cffafe;
+}
+
+.btn-add {
+    padding: 8px 12px;
+    color: #fff;
+    background-color: #16a34a;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+
+.btn-add:hover {
+    opacity: 0.8;
+}
+
+.search-and-logout {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search-box {
+    display: flex;
+    border: 1px solid #0891b2;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: #fff;
+    width: 80%;
+    box-sizing: border-box;
+    margin-right: 16px;
+}
+
+.search-input {
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.btn-logout {
+    color: #0284c7;
+    font-size: 24px;
+    margin: 0 16px;
+}
+
+.btn-logout:hover {
+    opacity: 0.6;
+}
+
+.input-date {
+    font-size: 16px;
+    margin-left: 8px;
+    margin-right: 16px;
+}
+
+.input-indate{
+    color: #0284c7;
+    margin-left: 8px;
+    border: 1px solid #0284c7;
+}
+
+.input-duedate {
+    color: #db2777;
+    border: 1px solid #db2777;
+}
+
+.content {
+    margin: 32px;
+    display: block;
+}
+
+label.content-lable {
+    width: 100%;
+    display: block;
+    margin-bottom: 4px;
+    margin-top: 28px;
+    color: #047857;
+    font-size: 16px;
+}
+
+#content-title {
+    width: 50%;
+    height: 36px;
+    padding: 6px 12px;
+    display: block;
+    
+    border: 1px solid #059669;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 28px;
+}
+
+#content-detail {
+    width: 100%;
+    height: 120px;
+    padding: 6px 12px;
+    display: block;
+    
+    border: 1px solid #059669;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 28px;    
+}
+
+#content-title:focus, #content-detail:focus {
+    outline: none;
+}
+
+.confirm-add {
+    padding: 8px 12px;
+    background-color: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    width: 96px;
+    font-size: 16px;
+
+}
+
+.confirm-add:hover {
+    opacity: 0.8;
+}
+
+.list-job {
+    padding-left: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.job-item {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.7;
+    padding: 8px;
+    margin: 12px 0;
+    box-sizing: border-box;
+}
+
+.job-item:hover {
+    opacity: 1;
+}
+
+.update, .delete {
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.update {
+    color: #0891b2;
+}
+
+.delete {
+    color: #db2777;
+}
+.update:hover, .delete:hover {
+    opacity: 0.6;
+}
+
+.job-item-title {
+    width: 80%;
+}
+
+.in-date{
+    color: #0284c7;
+}
+
+.due-date{
+    color: #e11d48;
+}
+
+.done-mess {
+    color: #16a34a;
+}
+
+.in-date-label, .due-date-label {
+    margin-bottom: 12px;
+}
+
+.in-date-label {
+    color: #0284c7;
+}
+
+.due-date-label {
+    color: #e11d48;
+}
+
