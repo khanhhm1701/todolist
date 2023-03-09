@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./RegisterAccount.css";
+import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
+import Input from "../components/Input";
 
 
 const initFormValue = {
@@ -56,9 +57,13 @@ export default function RegisterPage() {
 
     const handleChange = (event) => {
         const { value, name } = event.target
-        setFormValue({
-            ...formValue,
-            [name]: value
+        console.log(event)
+        setFormValue(prev => {
+            console.log(prev)
+            return ({
+                ...prev,
+                [name]: value
+            })
         })
     }
 
@@ -67,7 +72,7 @@ export default function RegisterPage() {
         if (validateForm()) {
             console.log('form value', formValue)
 
-            
+
 
             const ListUser = JSON.parse(localStorage.getItem('listUser'))
             const newListUser = [...ListUser, formValue]
@@ -91,14 +96,13 @@ export default function RegisterPage() {
                 <form onSubmit={handleSubmit}>
                     {/* User name */}
                     <div className="mb-2">
-                        <label htmlFor="user-name" className="form-label">user name</label>
-                        <input
+                        <Input
                             id="user-name"
+                            title="user name"
                             type="text"
-                            className="form-control"
                             name="userName"
-                            value={formValue.userName}
-                            onChange={handleChange}
+                            formValue={formValue.userName}
+                            handleChange={handleChange}
                         />
                         {formError.userName && (
                             <div className="error-feedback">{formError.userName}</div>
@@ -106,14 +110,13 @@ export default function RegisterPage() {
                     </div>
                     {/* Password */}
                     <div className="mb-2">
-                        <label htmlFor="pass" className="form-label">password</label>
-                        <input
+                        <Input
                             id="pass"
+                            title="pass word"
                             type="password"
-                            className="form-control"
                             name="password"
-                            value={formValue.password}
-                            onChange={handleChange}
+                            formValue={formValue.password}
+                            handleChange={handleChange}
                         />
                         {formError.password && (
                             <div className="error-feedback">{formError.password}</div>
@@ -121,14 +124,13 @@ export default function RegisterPage() {
                     </div>
                     {/* Check pass */}
                     <div className="mb-2">
-                        <label htmlFor="check-pass" className="form-label">check pass</label>
-                        <input
+                        <Input
                             id="check-pass"
+                            title="Check password"
                             type="password"
-                            className="form-control"
                             name="checkPass"
-                            value={formValue.checkPass}
-                            onChange={handleChange}
+                            formValue={formValue.checkPass}
+                            handleChange={handleChange}
                         />
                         {formError.checkPass && (
                             <div className="error-feedback">{formError.checkPass}</div>
@@ -136,14 +138,13 @@ export default function RegisterPage() {
                     </div>
                     {/* Email */}
                     <div className="mb-2">
-                        <label htmlFor="email" className="form-label">email</label>
-                        <input
+                        <Input
                             id="email"
+                            title="email"
                             type="email"
-                            className="form-control"
                             name="email"
-                            value={formValue.email}
-                            onChange={handleChange}
+                            formValue={formValue.email}
+                            handleChange={handleChange}
                         />
                         {formError.email && (
                             <div className="error-feedback">{formError.email}</div>
@@ -151,13 +152,13 @@ export default function RegisterPage() {
                     </div>
                     {/* Phone */}
                     <div className="mb-2">
-                        <label htmlFor="phone" className="form-label">phone</label>
-                        <input
+                        <Input
                             id="phone"
+                            title="phone number"
                             type="text"
-                            className="form-control"
                             name="phone"
-                            onChange={handleChange}
+                            formValue={formValue.phone}
+                            handleChange={handleChange}
                         />
                         {formError.phone && (
                             <div className="error-feedback">{formError.phone}</div>

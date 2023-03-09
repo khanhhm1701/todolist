@@ -2,9 +2,9 @@
 
 import React, { Routes, Route } from 'react-router-dom'
 
-import RegisterPage from './RegisterAccount/RegisteAccount';
-import SigninPage from './RegisterAccount/SigninAccount';
-import TodoList from './updateTodoList/TodoList';
+import RegisterPage from './pages/RegisteAccount';
+import SigninPage from './pages/SigninAccount';
+import TodoList from './pages/TodoList';
 
 function App() {
 

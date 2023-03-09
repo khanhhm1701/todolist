@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./RegisterAccount.css";
+import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
+import Input from "../components/Input";
 
 
 const initFormValue = {
@@ -12,7 +13,7 @@ const isEmptyValue = (value) => {
     return !value || value.trim().length < 1
 }
 
-export default function RegisterPage() {
+export default function SigninPage() {
 
     const [formValue, setFormValue] = useState(initFormValue)
     const [formError, setFormError] = useState({})
@@ -34,10 +35,10 @@ export default function RegisterPage() {
 
     const handleChange = (event) => {
         const { value, name } = event.target
-        setFormValue({
-            ...formValue,
+        setFormValue(prev=>({
+            ...prev,
             [name]: value
-        })
+        }))
     }
 
     const handleSubmit = (event) => {
@@ -76,14 +77,13 @@ export default function RegisterPage() {
                 <form onSubmit={handleSubmit}>
                     {/* User name */}
                     <div className="mb-2">
-                        <label htmlFor="user-name" className="form-label">user name</label>
-                        <input
-                            id="user-name"
-                            type="text"
-                            className="form-control"
-                            name="userName"
-                            value={formValue.userName}
-                            onChange={handleChange}
+                        <Input
+                            id = "user-name"
+                            title = "user name"
+                            type = "text"
+                            name = "userName"
+                            formValue = {formValue.userName}
+                            handleChange = {handleChange}
                         />
                         {formError.userName && (
                             <div className="error-feedback">{formError.userName}</div>
@@ -91,14 +91,13 @@ export default function RegisterPage() {
                     </div>
                     {/* Password */}
                     <div className="mb-2">
-                        <label htmlFor="pass" className="form-label">password</label>
-                        <input
-                            id="pass"
-                            type="password"
-                            className="form-control"
-                            name="password"
-                            value={formValue.password}
-                            onChange={handleChange}
+                        <Input
+                            id = "pass"
+                            title = "pass word"
+                            type = "password"
+                            name = "password"
+                            formValue = {formValue.password}
+                            handleChange = {handleChange}
                         />
                         {formError.password && (
                             <div className="error-feedback">{formError.password}</div>
