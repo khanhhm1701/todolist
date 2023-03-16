@@ -1,25 +1,28 @@
 import "../assets/css/TodoList.css";
-import { NavLink } from "react-router-dom"
+import "../assets/css/Navbar.css"
 
-function NavBar(props) {
-    
+function NavBar({ searchTerm, setSearchTerm }) {
+
     return (
         <div className="nav-bar">
-            <button className="btn-add" onClick={props.handleAddNewJob}>+ Add a new job</button>
-            <div className="search-and-logout">
-                <div className="search-box">
-                    <input
-                        type="text"
-                        className="search-input"
-                        value={props.searchTerm}
-                        onChange={(event) => props.setSearchTerm(event.target.value)}
-                        placeholder="Search..."
-                    />
-                    <i className="fa-solid fa-magnifying-glass"></i>
+            <div className="search-box">
+                <i className="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    className="search-input"
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    placeholder="Search..."
+                />
+            </div>
+            <div className="notice-and-logout">
+                <div className="nav-notice">
+                    <i class="fa-regular fa-bell"></i>
                 </div>
-                <NavLink to="/" className="log-out">
-                    <i title="Logout" className="btn-logout fa-solid fa-right-from-bracket"></i>
-                </NavLink>
+                <div className="nav-mail">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <img src="https://bom.so/2dbXPw" alt="" className="user-icon" />
             </div>
         </div>
     )

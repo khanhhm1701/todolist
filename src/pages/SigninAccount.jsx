@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
 import Input from "../components/Input";
+import { isEmptyValue } from "../assets/utils/validation";
 
 
 const initFormValue = {
     userName: "",
     password: "",
-}
-
-const isEmptyValue = (value) => {
-    return !value || value.trim().length < 1
 }
 
 export default function SigninPage() {

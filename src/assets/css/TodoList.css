@@ -1,89 +1,49 @@
 .todo-page {
     display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .side-bar {
     width: 20%;
     height: 100vh;
-    background-color: #06b6d4;
+    background-color: #e9eef6;
     box-sizing: border-box;
 }
 
 .todo-logo {
     width: 100%;
+    height: 80px;
     text-align: center;
     font-size: 32px;
     font-weight: bold;
-    color: #fff;
-    margin: 16px 0;
+    color: #334155;
+    line-height: 80px;
+    border-bottom: 1px solid #cbd5e1;
+    background-color: #e3eaf5;
 }
 
-.content-and-nav {
-    display: block;
-    width: 80%;
-}
-
-.nav-bar {
+.todo-list {
     display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
-    background-color: #cffafe;
 }
 
-.btn-add {
-    padding: 8px 12px;
-    color: #fff;
-    background-color: #16a34a;
-    border: none;
-    border-radius: 6px;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-}
-
-.btn-add:hover {
-    opacity: 0.8;
-}
-
-.search-and-logout {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.search-box {
-    display: flex;
-    border: 1px solid #0891b2;
-    border-radius: 8px;
-    padding: 6px 12px;
-    background-color: #fff;
-    width: 80%;
-    box-sizing: border-box;
-    margin-right: 16px;
-}
-
-.search-input {
-    outline: none;
-    border: none;
-    width: 100%;
-    font-size: 16px;
-}
-
-.btn-logout {
-    color: #0284c7;
-    font-size: 24px;
-    margin: 0 16px;
-}
-
-.btn-logout:hover {
-    opacity: 0.6;
+.content-and-nav{
+    flex: 1;
+    background-color: #f6f7f8;
 }
 
 .input-date {
-    font-size: 16px;
-    margin-left: 8px;
-    margin-right: 16px;
+    font-size: 20px;
+    margin-left: 12px;
+}
+
+.input-date:focus {
+    outline: none;
 }
 
 .input-indate{
@@ -102,45 +62,58 @@
     display: block;
 }
 
+.content-form {
+    box-sizing: border-box;
+}
 label.content-lable {
     width: 100%;
     display: block;
-    margin-bottom: 4px;
-    margin-top: 28px;
-    color: #047857;
+    margin-bottom: 12px;
+    margin-top: 4px;
+    color: #64748b;
     font-size: 16px;
 }
 
 #content-title {
-    width: 50%;
-    height: 36px;
-    padding: 6px 12px;
-    display: block;
-    
-    border: 1px solid #059669;
-    border-radius: 6px;
-    background-color: #f8fafc;
+    display: flex;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 28px;
+    margin-top: 12px;
+    background-color: #fff;
+    color: #475569;
+    line-height: 40px;
+    border: none;
+    padding: 0 12px;
+    border-left: 1.5px solid #10b981;
     box-sizing: border-box;
     font-size: 16px;
-    margin-bottom: 28px;
+    transition: all 0.15s ease-in;
 }
 
+
 #content-detail {
+    display: flex;
     width: 100%;
-    height: 120px;
-    padding: 6px 12px;
-    display: block;
-    
-    border: 1px solid #059669;
-    border-radius: 6px;
-    background-color: #f8fafc;
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 28px;
+    margin-top: 12px;
+    background-color: #fff;
+    color: #475569;
+    line-height: 40px;
+    border: none;
+    padding: 0 12px;
+    border-left: 1.5px solid #10b981;
     box-sizing: border-box;
     font-size: 16px;
-    margin-bottom: 28px;    
+    transition: all 0.15s ease-in;        
 }
 
 #content-title:focus, #content-detail:focus {
     outline: none;
+    border-left: 3px solid #10b981;
 }
 
 .confirm-add {
@@ -151,6 +124,7 @@ label.content-lable {
     border-radius: 6px;
     width: 96px;
     font-size: 16px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
 
 }
 
@@ -167,16 +141,16 @@ label.content-lable {
 
 .job-item {
     display: flex;
-    width: 100%;
-    background-color: #fff;
-    opacity: 0.7;
-    padding: 8px;
-    margin: 12px 0;
+    width: 90%;
+    background-color: rgba(255,255,255, 0.6);
+    padding: 12px 8px;
+    margin-top: 12px;
     box-sizing: border-box;
+    border-radius: 6px;
 }
 
 .job-item:hover {
-    opacity: 1;
+    background-color: rgba(255,255,255, 1   );
 }
 
 .update, .delete {
@@ -212,15 +186,49 @@ label.content-lable {
     color: #16a34a;
 }
 
+.date {
+    display: flex;
+}
+
 .in-date-label, .due-date-label {
-    margin-bottom: 12px;
+    display: flex;
+    width: 50%;
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+    margin: 28px 0;
+    background-color: #fff;
+    color: #475569;
+    line-height: 40px;
+    overflow: hidden;
 }
 
 .in-date-label {
-    color: #0284c7;
+    margin-right: 16px;
 }
 
 .due-date-label {
-    color: #e11d48;
+    margin-left: 16px;
+}
+
+.in-date-label >span, .due-date-label > span {
+    width: 120px;
+    color: #fff;
+    padding-left: 12px;
+    box-shadow: 3px 0 5px rgba(0,0,0,0.15);
+}
+
+.in-date-label >span {
+    background-color: #3b82f6;
+}
+
+.due-date-label > span {
+    background-color: #db2777;
+}
+
+.input-date {
+    border: none;
+    background-color: #fff;
+    padding: 8px;
+    flex: 1;
 }
 

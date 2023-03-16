@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
 import Input from "../components/Input";
+import { isEmptyValue, isEmptyValid } from "../assets/utils/validation";
 
 
 const initFormValue = {
@@ -10,14 +11,6 @@ const initFormValue = {
     checkPass: "",
     email: "",
     phone: "",
-}
-
-const isEmptyValue = (value) => {
-    return !value || value.trim().length < 1
-}
-
-const isEmptyValid = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 export default function RegisterPage() {

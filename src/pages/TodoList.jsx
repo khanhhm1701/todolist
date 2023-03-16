@@ -1,21 +1,32 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "../assets/css/TodoList.css"
 import NavBar from "../parts/NavBar"
-import SideBarItem from "../parts/SideBarItem"
 import ContentJobDone from "../parts/ContentJobDone"
 import FormContent from "../parts/FomContent"
+import SideBar from "../parts/SideBar"
+import Menu from "../parts/Menu"
+import { deleteJob, postJob, putJob } from "../services/jobAPI"
 
 export default function TodoList() {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [jobs, setJobs] = useState(JSON.parse(localStorage.getItem('listJobs')) || []);
+    const [jobs, setJobs] = useState([]);
     const [selectedJob, setSelectedJob] = useState(null);
     const [nextId, setNextId] = useState(1)
     const [editing, setEditing] = useState(null)
     const [dueDate, setDueDate] = useState(null)
     const [inDate, setInDate] = useState(null)
     const [searchTerm, setSearchTerm] = useState('')
+
+    useEffect(() => {
+        fetch('https://640fe591864814e5b6420012.mockapi.io/api/todo')
+            .then(res => res.json())
+            .then(listJobs => {
+                setJobs(listJobs)
+            })
+    },[])
+
 
     function handleTitleChange(e) {
         setTitle(e.target.value)
@@ -34,7 +45,7 @@ export default function TodoList() {
         setDueDate(job.dueDate)
     }
 
-    const handleEdit = () => {
+    const handleEdit = () => {  
         const newJobs = jobs.map((job) => {
             if (job.id === editing.id) {
                 const newJob = {
@@ -45,6 +56,7 @@ export default function TodoList() {
                     content: content,
                 }
                 setSelectedJob(newJob)
+                putJob(editing.id, newJob)
                 return newJob
 
             } else {
@@ -52,7 +64,6 @@ export default function TodoList() {
             }
         });
         setJobs(newJobs)
-        localStorage.setItem("listJobs", JSON.stringify(newJobs))
         setEditing(null)
         setTitle("")
         setContent("")
@@ -66,7 +77,7 @@ export default function TodoList() {
     function handleDelete(id) {
         const updatedJobs = jobs.filter((job) => job.id !== id);
         setJobs(updatedJobs)
-        localStorage.setItem('listJobs', JSON.stringify(updatedJobs));
+        deleteJob(id)
     }
 
     function handleSubmit(e) {
@@ -81,8 +92,7 @@ export default function TodoList() {
                 isChecked: false
             }
             const newJobs = [...pre, newJob]
-            const jsonListJobs = JSON.stringify(newJobs)
-            localStorage.setItem('listJobs', jsonListJobs)
+            postJob(newJob)
             return newJobs
         })
         setNextId(nextId + 1)
@@ -120,27 +130,18 @@ export default function TodoList() {
 
     return (
         <div className="todo-page">
+            {/* Menu */}
+            <Menu
+                handleAdd = {handleAddNewJob}
+            />
             {/* Side bar */}
-
-            {/* <SideBar>
+            <SideBar
                 jobs={filteredJobs}
                 onClick={handleJobClick}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}
                 onCheckChange={handleCheckedChange}
-            </SideBar> */}
-            <div className="side-bar">
-                <div className="todo-logo">TO DO LIST</div>
-                <ul className="list-job">
-                    <SideBarItem
-                        jobs={filteredJobs}
-                        onClick={handleJobClick}
-                        onUpdate={handleUpdate}
-                        onDelete={handleDelete}
-                        onCheckChange={handleCheckedChange}
-                    />
-                </ul>
-            </div>
+            />
             {/* Content and NavBar */}
             <div className="content-and-nav">
                 {/* Navbar */}
@@ -150,6 +151,7 @@ export default function TodoList() {
                     setSearchTerm={setSearchTerm}
                 />
                 <div className="content">
+                    <div className="welcome">Welcome back, <strong>Khanh</strong></div>
                     {selectedJob ? (
                         <ContentJobDone selectedJob={selectedJob} />
                     ) : (
