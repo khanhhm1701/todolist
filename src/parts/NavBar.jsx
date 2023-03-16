@@ -17,10 +17,10 @@ function NavBar({ searchTerm, setSearchTerm }) {
             </div>
             <div className="notice-and-logout">
                 <div className="nav-notice">
-                    <i class="fa-regular fa-bell"></i>
+                    <i className="fa-regular fa-bell"></i>
                 </div>
                 <div className="nav-mail">
-                    <i class="fa-regular fa-envelope"></i>
+                    <i className="fa-regular fa-envelope"></i>
                 </div>
                 <img src="https://bom.so/2dbXPw" alt="" className="user-icon" />
             </div>

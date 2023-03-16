@@ -8,19 +8,19 @@ export default function Menu({handleAdd}) {
             </div>
             <div className="menu-control">
                 <div className="control-add" onClick={handleAdd}>
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                 </div>
                 <div className="control-item control-list control-selected">
                     <i className="fa-solid fa-list-check"></i>
                 </div>
                 <div className="control-item">
-                    <i class="fa-solid fa-users"></i>
+                    <i className="fa-solid fa-users"></i>
                 </div>
                 <div className="control-item">
-                    <i class="fa-regular fa-clock"></i>
+                    <i className="fa-regular fa-clock"></i>
                 </div>
                 <div className="control-item">
-                    <i class="fa-regular fa-calendar"></i>
+                    <i className="fa-regular fa-calendar"></i>
                 </div>
             </div>
             <NavLink to="/" className="log-out">

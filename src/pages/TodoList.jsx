@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "../assets/css/TodoList.css"
 import NavBar from "../parts/NavBar"
-import ContentJobDone from "../parts/ContentJobDone"
+import ContentJobDone from "../parts/ContentJobDone"    
 import FormContent from "../parts/FomContent"
 import SideBar from "../parts/SideBar"
 import Menu from "../parts/Menu"
@@ -114,13 +114,13 @@ export default function TodoList() {
     function handleCheckedChange(id) {
         const updatedJobs = jobs.map((job) => {
             if (job.id === id) {
-                return { ...job, isChecked: !job.isChecked };
+                const newJob = { ...job, isChecked: !job.isChecked }
+                putJob(id, newJob)
+                return newJob
             }
             return job;
         });
         setJobs(updatedJobs);
-        localStorage.setItem('listJobs', JSON.stringify(updatedJobs))
-
     }
 
     const filteredJobs = jobs.filter((job) =>
@@ -140,7 +140,7 @@ export default function TodoList() {
                 onClick={handleJobClick}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}
-                onCheckChange={handleCheckedChange}
+                onCheckedChange={handleCheckedChange}
             />
             {/* Content and NavBar */}
             <div className="content-and-nav">
