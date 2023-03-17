@@ -1,0 +1,90 @@
+.selected-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 28px;
+    margin-top: 12px;
+    background-color: #fff;
+    color: #475569;
+    line-height: 40px;
+    border: none;
+    padding: 0 12px;
+    border-left: 3px solid #10b981;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.15s ease-in;
+}
+
+.selected-content.unchecked {
+    border-left: 3px solid #db2777;
+}
+
+.selected-title {
+    margin: 16px 0 8px 0;
+    font-size: 32px;
+}
+
+.in-date,
+.due-date,
+.selected-detail {
+    margin: 0;
+}
+
+.selected-detail {
+    margin: 4px 0 12px 0;
+    line-height: 28px;
+}
+
+.in-date {
+    color: #2d74dc;
+}
+
+.due-date {
+    color: #db2777;
+}
+
+.done-show {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.done-img {
+    width: 30%;
+}
+
+.done-content {
+    display: flex;
+    flex: 1;
+}
+
+.done-title {
+    flex: 1;
+    text-align: center;
+}
+
+.firework {
+    width: 25%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.firework1 {
+    transform: scaleX(-1)
+}
+
+.done-title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.done-title > span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #10b981;
+}
+

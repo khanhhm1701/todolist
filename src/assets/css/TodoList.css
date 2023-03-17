@@ -174,18 +174,6 @@ label.content-lable {
     width: 80%;
 }
 
-.in-date{
-    color: #0284c7;
-}
-
-.due-date{
-    color: #e11d48;
-}
-
-.done-mess {
-    color: #16a34a;
-}
-
 .date {
     display: flex;
 }
