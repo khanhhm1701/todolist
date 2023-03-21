@@ -3,8 +3,10 @@
 
 // POST JOB
 
+const JOB_URL  = "https://640fe591864814e5b6420012.mockapi.io/api/todo"
+
 export function postJob(jobData) {
-    return fetch("https://640fe591864814e5b6420012.mockapi.io/api/todo", {
+    return fetch(JOB_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +27,7 @@ export function postJob(jobData) {
 // PUT JOB
 
 export function putJob(jobId, jobData) {
-    return fetch("https://640fe591864814e5b6420012.mockapi.io/api/todo/" + jobId, {  
+    return fetch(JOB_URL + jobId, {  
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ export function putJob(jobId, jobData) {
 // DELETE JOB 
 
 export function deleteJob(jobId) {
-    return fetch("https://640fe591864814e5b6420012.mockapi.io/api/todo/"+jobId, {
+    return fetch(JOB_URL+jobId, {
       method: 'DELETE',
     })
     .then(response => {

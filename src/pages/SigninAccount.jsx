@@ -3,6 +3,7 @@ import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
 import Input from "../components/Input";
 import { isEmptyValue } from "../assets/utils/validation";
+import { useEffect } from "react";
 
 
 const initFormValue = {
@@ -15,6 +16,15 @@ export default function SigninPage() {
     const [formValue, setFormValue] = useState(initFormValue)
     const [formError, setFormError] = useState({})
     const [errorMessage, setErrorMessage] = useState('');
+    const [listUser, setListUser] = useState("")
+
+    useEffect(() => {
+        fetch('https://640fe591864814e5b6420012.mockapi.io/api/user')
+            .then(res => res.json())
+            .then(listUser => {
+                setListUser(listUser);
+            })
+    },[])
 
     const validateForm = () => {
         const error = {}
@@ -41,13 +51,6 @@ export default function SigninPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            console.log('form value', formValue)
-
-            // Lấy thông tin tài khoản từ localStorage
-            const storedListUser = localStorage.getItem('listUser');
-
-            //JSON --> Array
-            const listUser =  JSON.parse(storedListUser)
 
             // Kiểm tra thông tin đăng nhập
             const user =  listUser.find((user) => {

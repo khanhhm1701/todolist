@@ -3,6 +3,8 @@ import "../assets/css/RegisterAccount.css";
 import { NavLink } from "react-router-dom"
 import Input from "../components/Input";
 import { isEmptyValue, isEmptyValid } from "../assets/utils/validation";
+import { addNewUser } from "../services/userAPI";
+
 
 
 const initFormValue = {
@@ -18,6 +20,8 @@ export default function RegisterPage() {
 
     const [formValue, setFormValue] = useState(initFormValue);
     const [formError, setFormError] = useState({})
+    const [nextId, setNextId] = useState(50)
+
 
     const validateForm = () => {
         const error = {}
@@ -50,9 +54,7 @@ export default function RegisterPage() {
 
     const handleChange = (event) => {
         const { value, name } = event.target
-        console.log(event)
         setFormValue(prev => {
-            console.log(prev)
             return ({
                 ...prev,
                 [name]: value
@@ -63,21 +65,25 @@ export default function RegisterPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            console.log('form value', formValue)
-
-
-
-            const ListUser = JSON.parse(localStorage.getItem('listUser'))
-            const newListUser = [...ListUser, formValue]
-            const jsonListUser = JSON.stringify(newListUser)
-            localStorage.setItem('listUser', jsonListUser)
-
-
-            // Chuyển hướng đến trang đăng nhập
-            window.location.href = '/';
+            const newUser = {
+                id: nextId,
+                userName: formValue.userName,
+                password: formValue.password,
+                email: formValue.email,
+                phone: formValue.phone,
+            }
+            addNewUser(newUser)
+                .then(() => {
+                    // Chuyển hướng đến trang đăng nhập
+                    window.location.href = '/';
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         } else {
             console.log('form invalid')
         }
+        setNextId(nextId + 1);
     }
 
 

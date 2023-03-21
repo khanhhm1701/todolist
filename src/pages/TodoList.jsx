@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "../assets/css/TodoList.css"
 import NavBar from "../parts/NavBar"
-import ContentJobDone from "../parts/ContentJobDone"    
+import ContentJobDone from "../parts/ContentJobDone"
 import FormContent from "../parts/FomContent"
 import SideBar from "../parts/SideBar"
 import Menu from "../parts/Menu"
@@ -25,7 +25,7 @@ export default function TodoList() {
             .then(listJobs => {
                 setJobs(listJobs)
             })
-    },[])
+    }, [])
 
 
     function handleTitleChange(e) {
@@ -45,7 +45,7 @@ export default function TodoList() {
         setDueDate(job.dueDate)
     }
 
-    const handleEdit = () => {  
+    const handleEdit = () => {
         const newJobs = jobs.map((job) => {
             if (job.id === editing.id) {
                 const newJob = {
@@ -132,43 +132,45 @@ export default function TodoList() {
         <div className="todo-page">
             {/* Menu */}
             <Menu
-                handleAdd = {handleAddNewJob}
+                handleAdd={handleAddNewJob}
             />
-            {/* Side bar */}
-            <SideBar
-                jobs={filteredJobs}
-                onClick={handleJobClick}
-                onUpdate={handleUpdate}
-                onDelete={handleDelete}
-                onCheckedChange={handleCheckedChange}
-            />
-            {/* Content and NavBar */}
-            <div className="content-and-nav">
-                {/* Navbar */}
-                <NavBar
-                    handleAddNewJob={handleAddNewJob}
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
+            <div className="sidebar-and-content">
+                {/* Side bar */}
+                <SideBar
+                    jobs={filteredJobs}
+                    onClick={handleJobClick}
+                    onUpdate={handleUpdate}
+                    onDelete={handleDelete}
+                    onCheckedChange={handleCheckedChange}
                 />
-                <div className="content">
-                    <div className="welcome">Welcome back, <strong>Khanh</strong></div>
-                    {selectedJob ? (
-                        <ContentJobDone selectedJob={selectedJob} />
-                    ) : (
-                        <FormContent
-                            inDate={inDate}
-                            setInDate={setInDate}
-                            dueDate={dueDate}
-                            setDueDate={setDueDate}
-                            title={title}
-                            content={content}
-                            handleTitleChange={handleTitleChange}
-                            handleContentChange={handleContentChange}
-                            handleEdit={handleEdit}
-                            handleSubmit={handleSubmit}
-                            editing={editing}
-                        />
-                    )}
+                {/* Content and NavBar */}
+                <div className="content-and-nav">
+                    {/* Navbar */}
+                    <NavBar
+                        handleAddNewJob={handleAddNewJob}
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                    />
+                    <div className="content">
+                        <div className="welcome">Welcome back, <strong>Khanh</strong></div>
+                        {selectedJob ? (
+                            <ContentJobDone selectedJob={selectedJob} />
+                        ) : (
+                            <FormContent
+                                inDate={inDate}
+                                setInDate={setInDate}
+                                dueDate={dueDate}
+                                setDueDate={setDueDate}
+                                title={title}
+                                content={content}
+                                handleTitleChange={handleTitleChange}
+                                handleContentChange={handleContentChange}
+                                handleEdit={handleEdit}
+                                handleSubmit={handleSubmit}
+                                editing={editing}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         </div >
